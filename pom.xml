@@ -127,7 +127,7 @@
                         </ports>
                     </container>
                     <from>
-                        <image>openjdk:9-jdk-slim</image>
+                        <image>11.0-jdk-oracle</image>
                     </from>
                 </configuration>
             </plugin>
