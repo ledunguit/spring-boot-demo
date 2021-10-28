@@ -15,7 +15,7 @@ pipeline {
       }
     }
 
-    stage ('OWASP Dependency-Check Vulnerabilities') {
+    /* stage ('OWASP Dependency-Check Vulnerabilities') {
       steps {
         withMaven(maven : 'maven') {
           sh 'mvn dependency-check:check'
@@ -33,7 +33,7 @@ pipeline {
           }
         }
       }
-    }
+    } */
 
     stage('Create and push container') {
       steps {
@@ -42,14 +42,15 @@ pipeline {
             sh "mvn jib:build"
           }
         }
-      } 
+      }
     }
 
-    stage('Anchore analyse') {
+
+    /* stage('Anchore analyse') {
       steps {
         writeFile file: 'anchore_images', text: 'docker.io/maartensmeets/spring-boot-demo'
         anchore name: 'anchore_images'
       }
-    }
+    } */
   }
 }
