@@ -15,6 +15,13 @@ pipeline {
                 }
             }
         }
+        stage ('OWASP Dependency-Check Vulnerabilities') {
+            steps {
+                withMaven(maven : 'maven') {
+                  sh 'mvn dependency-check:check'
+                }
+            }
+        }
         stage("SonarQube Analysis") {
             steps {
                 withSonarQubeEnv(credentialsId: "SonarQubeToken", installationName: "SonarQubeServer") {
